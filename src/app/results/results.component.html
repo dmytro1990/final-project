@@ -1,0 +1,9 @@
+
+<app-search (onSearch)="search($event)"></app-search>
+
+
+<div *ngFor="let post of airPosts">
+    <p>data: {{ post.station.geo }}</p>
+    <p>token: {{ post.geo }}</p>
+  
+</div>
