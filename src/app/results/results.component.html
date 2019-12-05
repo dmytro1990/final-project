@@ -1,9 +1,11 @@
 
 <app-search (onSearch)="search($event)"></app-search>
 
+<div id="map" style='height:380px;'></div>  
 
 <div *ngFor="let post of airPosts">
     <p>data: {{ post.station.geo }}</p>
     <p>token: {{ post.geo }}</p>
+	<p>token: {{ post.station.name }}</p>
   
 </div>
