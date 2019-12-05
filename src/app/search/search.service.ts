@@ -18,5 +18,11 @@ export class SearchService {
   }                      
   
 }
+
+//https://api.waqi.info/map/bounds/?latlng=39.379436,116.091230,40.235643,116.784
+
+//return this.http.get(`https://api.waqi.info/search/?token=6093a570588d1a52e24bdde7f35550c7486d2fd8&keyword=${subName}`);
+
+
 // https://api.waqi.info/search/?token=demo&keyword=bangalore
 // https://api.waqi.info/search/?keyword=:keyword&token=:6093a570588d1a52e24bdde7f35550c7486d2fd8=${subName}

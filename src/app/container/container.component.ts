@@ -30,8 +30,26 @@ export class ContainerComponent implements OnInit {
 
   }
 
+  initMap () {
+    var  map  =  new  google.maps.Map(document.getElementById('map'),  {  
+      center:  new  google.maps.LatLng(51.505,  -0.09),  
+      mapTypeId:  google.maps.MapTypeId.ROADMAP,  
+      zoom:  11  
+  });  
+
+    var  t  =  new  Date().getTime();  
+    var  waqiMapOverlay  =  new  google.maps.ImageMapType({  
+          getTileUrl:  function(coord,  zoom)  {  
+                    return  'https://tiles.waqi.info/tiles/usepa-aqi/'  +  zoom  +  "/"  +  coord.x  +  "/"  +  coord.y  +  ".png?token=6093a570588d1a52e24bdde7f35550c7486d2fd8";  
+          },  
+          name:  "Air  Quality",  
+    });  
+
+    map.overlayMapTypes.insertAt(0,waqiMapOverlay);  
+  }
+
   ngOnInit() {
-    
+    this.initMap();
   }
 
 }
