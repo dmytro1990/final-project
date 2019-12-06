@@ -1,7 +1,8 @@
 
-<app-search (onSearch)="search($event)"></app-search>
+<!--<app-search (onSearch)="search($event)"></app-search>-->
 
-<div id="map" style='height:380px;'></div>  
+<!--<div id="map" style='height:380px;'></div>  -->
+<app-map></app-map>
 
 <div *ngFor="let post of airPosts">
     <p>data: {{ post.station.geo }}</p>
