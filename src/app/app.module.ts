@@ -12,6 +12,7 @@ import { SearchCriteriaComponent } from './search-criteria/search-criteria.compo
 import { SearchService } from './search/search.service';
 import { ApiService } from './api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
 	FormsModule,
     HttpClientModule,
+	GoogleMapsModule
       
   ],
   providers: [ ApiService, SearchService ],

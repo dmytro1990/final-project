@@ -19,20 +19,20 @@ export class SearchComponent implements OnInit {
     this.router.navigate(["results"]);
   
   }
-	 search(subName: string): void {
-	  console.log(this.searchService);
-// step 9 - call the services's method that makes the request    
-    console.log(subName);
-    this.searchService
-	.fetchData(subName)
-// step 10 - subscribe to an observable to get the response (data from request)    
-    .subscribe((response: any) => {
-      console.log(response);
-      this.onSearch.emit(response.data)
-    }, error => {
-      console.log(`oh  no. ${error}`);
-    });
-  }
+//	 search(subName: string): void {
+//	  console.log(this.searchService);
+//// step 9 - call the services's method that makes the request    
+//    console.log(subName);
+//    this.searchService
+//	.fetchData(subName)
+//// step 10 - subscribe to an observable to get the response (data from request)    
+//    .subscribe((response: any) => {
+//      console.log(response);
+//      this.onSearch.emit(response.data)
+//    }, error => {
+//      console.log(`oh  no. ${error}`);
+//    });
+//  }
 
   ngOnInit() {
   }

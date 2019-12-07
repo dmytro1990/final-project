@@ -13,10 +13,11 @@ export class SearchService {
 
   fetchData(subName) {
     console.log(subName);
-    
+//    return this.http.get(`api.airvisual.com/v2/cities=${subName}?key=fe6a7207-c834-4329-96e2-d9bda2e4fed5`);
     return this.http.get(`https://api.waqi.info/search/?token=6093a570588d1a52e24bdde7f35550c7486d2fd8&keyword=${subName}`);
   }                      
   
 }
 	
-	
+//	curl --location --request GET "api.airvisual.com/v2/city?city=Detroit&state=Michigan&country=USA&key={{YOUR_API_KEY}}"
+
