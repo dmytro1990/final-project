@@ -1,4 +1,9 @@
-<form #form="ngForm" (ngSubmit)="handleSubmit(form)">
-    <input type="text" ngModel name="subName">
-    <button routerLink="/results">Search</button>
+<form #form="ngForm" (ngSubmit)="handleSubmit(form.value)">
+  <label for="city">City</label>
+  <input type="text" name="city" id="city" ngModel>
+  <label for="state">State</label>
+  <select name="state" id="state" ngModel>
+    <option value="{{ state }}" *ngFor="let state of states">{{state}}</option>
+  </select>
+  <button>Search</button>
 </form>

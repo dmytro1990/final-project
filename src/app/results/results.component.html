@@ -1,12 +1,3 @@
-
-<!--<app-search (onSearch)="search($event)"></app-search>-->
-
-<!--<div id="map" style='height:380px;'></div>  -->
-<app-map></app-map>
-
-<div *ngFor="let post of airPosts">
-    <p>data: {{ post.station.geo }}</p>
-    <p>token: {{ post.geo }}</p>
-	<p>token: {{ post.station.name }}</p>
-  
-</div>
+<app-search></app-search>
+<app-map [results]="results"></app-map>
+<p>Put your HTML here</p>
