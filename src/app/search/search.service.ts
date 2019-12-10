@@ -23,6 +23,22 @@ export class SearchService {
         city: params.city,
         state: params.state
       }
+
+
+    });
+  }
+
+
+  fetchCityList(params) {
+    // console.log(params);
+    return this.http.get("http://api.airvisual.com/v2/cities?", {
+      params: {
+        key: apiKey,
+        country: country,
+        state: params.state
+      }
+
+
     });
   }
 
