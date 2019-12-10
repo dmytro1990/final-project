@@ -1,12 +1,19 @@
+<app-search></app-search>
+<app-map [results]="results"></app-map>
+<h1>{{ results?.data.city }}, {{ results?.data.state }}</h1>
+<h1>AQI China: {{ results?.data.current.pollution.aqicn }}</h1>
+<h1>AQI US: {{ results?.data.current.pollution.aqius }}</h1>
+<h1>Pollution Measurement China: {{ results?.data.current.pollution.maincn }}</h1>
+<h1>Pollution Measurement US: {{ results?.data.current.pollution.mainus }}</h1>
+<h1>temperature in celsius: {{ results?.data.current.weather.tp }}</h1>
 
-<!--<app-search (onSearch)="search($event)"></app-search>-->
+<!--
+<h1>timestamp: {{ results?.data.current.pollution.ts }}</h1>
+<h1>atmospheric pressure in hPa: {{ results?.data.current.weather.pr }}</h1>
+<h1>humidity %: {{ results?.data.current.weather.hu }}</h1>
+<h1>wind direction: {{ results?.data.current.weather.wd }}</h1>
+<h1>wind speed: {{ results?.data.current.weather.ws }}</h1>
+<h1>weather icon code: {{ results?.data.current.weather.ic }}</h1>
+-->
 
-<!--<div id="map" style='height:380px;'></div>  -->
-<app-map></app-map>
 
-<div *ngFor="let post of airPosts">
-    <p>data: {{ post.station.geo }}</p>
-    <p>token: {{ post.geo }}</p>
-	<p>token: {{ post.station.name }}</p>
-  
-</div>

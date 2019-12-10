@@ -1,8 +1,5 @@
-<!--different components are called here, to be shown on the default "/" URL route, or "homepage"-->
-
-<!--<app-search (onSearch)="search($event)"></app-search>-->
-
-<app-search (onSearch)="handleSearch($event)"></app-search>
-<!--<app-search-criteria></app-search-criteria>-->
-<app-results [airPosts]="airPosts"></app-results>
+<ul>
+    <li><img src="/assets/airific-02.png" width="120px" height="32px"></li>
+    <li><a href="/home">Home</a></li>
+  </ul>
 <router-outlet></router-outlet>

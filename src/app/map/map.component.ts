@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SearchService } from '../search/search.service';
 import { MapInfoWindow, MapMarker } from '@angular/google-maps';
 
+
+
 declare global {
-	interface Window {
-		google: any;
-	}
+  interface Window {
+    google: any;
+  }
 }
 @Component({
   selector: 'app-map',
@@ -13,19 +15,12 @@ declare global {
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-	markers: any[] = [
-		{
-			position: {lat: 42.335960, lng: -83.049750},
-			label: {
-        color: 'yellow',
-        text: 'hello '
-      },
-			title: "Detroit",
-			options: { animation: google.maps.Animation.BOUNCE }
-		}
-	];
 	
-	zoom = 12
+@Input() results: any;
+
+  markers: any[] = [];
+
+  zoom = 10
   center: google.maps.LatLngLiteral
   options: google.maps.MapOptions = {
     mapTypeId: 'hybrid',
@@ -35,8 +30,30 @@ export class MapComponent implements OnInit {
     maxZoom: 15,
     minZoom: 8,
   }
+	createMarkers() {
+		if (this.results && this.results.data) {
+		this.markers = [{
+//      position: { lat: 42.335960, lng: -83.049750 },
+		position: { lat: this.results.data.location.coordinates[1], 
+				    lng: this.results.data.location.coordinates[0] 
+		},
+        label: {
+        color: 'yellow',
+        text: this.results.data.city
+      },
+      title: "Detroit",
+      options: { animation: google.maps.Animation.BOUNCE }
+    }]
+		}
+	}
+	
+	ngOnChanges() {
+		this.createMarkers();
+		
+	}
 
   ngOnInit() {
+	  console.log(this.results);
     navigator.geolocation.getCurrentPosition(position => {
       this.center = {
         lat: position.coords.latitude,
@@ -52,8 +69,8 @@ export class MapComponent implements OnInit {
   zoomOut() {
     if (this.zoom > this.options.minZoom) this.zoom--
   }
-	
-	 addMarker() {
+
+  addMarker() {
     this.markers.push({
       position: {
         lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
@@ -67,28 +84,28 @@ export class MapComponent implements OnInit {
       options: { animation: google.maps.Animation.BOUNCE },
     })
   }
-	
-	
-//  constructor() { }
-//	
-//	initMap () {
-//  var  map  =  new  window.google.maps.Map(document.getElementById('map'),  {  
-//    center:  new  window.google.maps.LatLng(51.505,  -0.09),  
-//    mapTypeId:  window.google.maps.MapTypeId.ROADMAP,  
-//    zoom:  11  
-//});  
-//  var  t  =  new  Date().getTime();  
-//  var  waqiMapOverlay  =  new  window.google.maps.ImageMapType({  
-//        getTileUrl:  function(coord,  zoom)  {  
-//                  return  'https://tiles.waqi.info/tiles/usepa-aqi/'  +  zoom  +  "/"  +  coord.x  +  "/"  +  coord.y  +  ".png?token=AIzaSyBjiGx9DXzREA_CZEdPKleOI6fUVEqWReo";  
-//        },  
-//        name:  "Air  Quality",  
-//  });  
-//  map.overlayMapTypes.insertAt(0,waqiMapOverlay);  
-//}
-//
-// ngOnInit() {
-//    this.initMap();
-//  }
+
+
+  //  constructor() { }
+  //	
+  //	initMap () {
+  //  var  map  =  new  window.google.maps.Map(document.getElementById('map'),  {  
+  //    center:  new  window.google.maps.LatLng(51.505,  -0.09),  
+  //    mapTypeId:  window.google.maps.MapTypeId.ROADMAP,  
+  //    zoom:  11  
+  //});  
+  //  var  t  =  new  Date().getTime();  
+  //  var  waqiMapOverlay  =  new  window.google.maps.ImageMapType({  
+  //        getTileUrl:  function(coord,  zoom)  {  
+  //                  return  'https://tiles.waqi.info/tiles/usepa-aqi/'  +  zoom  +  "/"  +  coord.x  +  "/"  +  coord.y  +  ".png?token=AIzaSyBjiGx9DXzREA_CZEdPKleOI6fUVEqWReo";  
+  //        },  
+  //        name:  "Air  Quality",  
+  //  });  
+  //  map.overlayMapTypes.insertAt(0,waqiMapOverlay);  
+  //}
+  //
+  // ngOnInit() {
+  //    this.initMap();
+  //  }
 
 }

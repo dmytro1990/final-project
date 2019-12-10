@@ -13,6 +13,8 @@ import { SearchService } from './search/search.service';
 import { ApiService } from './api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { HomeComponent } from './home/home.component';
+import { ResolverService } from './resolver.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     ResultsComponent,
     AqComponent,
     ForecastComponent,
-    SearchCriteriaComponent
+    SearchCriteriaComponent,
+    HomeComponent
 
   ],
   imports: [
@@ -33,7 +36,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 	GoogleMapsModule
       
   ],
-  providers: [ ApiService, SearchService ],
+  providers: [ ApiService, SearchService, ResolverService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

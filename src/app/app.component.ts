@@ -11,8 +11,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
 	
   title = 'gc-final-project';
-	airPosts: any[] = [];
-	handleSearch(data) {
-		this.airPosts = data;
-	}
+//	airPosts: any[] = [];
+//	handleSearch(data) {
+//		this.airPosts = data;
+//	}
 }
