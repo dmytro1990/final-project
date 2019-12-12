@@ -21,8 +21,8 @@ export class MapComponent implements OnInit {
   markers: any[] = [];
 
   zoom = 10
-  center: google.maps.LatLngLiteral
-  options: google.maps.MapOptions = {
+    center: google.maps.LatLngLiteral
+    options: google.maps.MapOptions = {
     mapTypeId: 'hybrid',
     zoomControl: false,
     scrollwheel: false,

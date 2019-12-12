@@ -41,6 +41,24 @@ export class SearchService {
 
     });
   }
+	
+//	allCities: any[] = fetchCityList(params);
+//	
+//	
+//	
+//	fetchAllCities(params) {
+//	// console.log(params);
+//    return this.http.get("http://api.airvisual.com/v2/city?", {
+//      params: {
+//        key: apiKey,
+//        country: country,
+//        state: params.state,
+//		city:   
+//      }
+//
+//
+//    });
+//  }
 
 }
 
