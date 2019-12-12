@@ -15,14 +15,14 @@ declare global {
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-	
-@Input() results: any;
+
+  @Input() results: any;
 
   markers: any[] = [];
 
   zoom = 10
-    center: google.maps.LatLngLiteral
-    options: google.maps.MapOptions = {
+  center: google.maps.LatLngLiteral
+  options: google.maps.MapOptions = {
     mapTypeId: 'hybrid',
     zoomControl: false,
     scrollwheel: false,
@@ -30,30 +30,35 @@ export class MapComponent implements OnInit {
     maxZoom: 15,
     minZoom: 8,
   }
-	createMarkers() {
-		if (this.results && this.results.data) {
-		this.markers = [{
-//      position: { lat: 42.335960, lng: -83.049750 },
-		position: { lat: this.results.data.location.coordinates[1], 
-				    lng: this.results.data.location.coordinates[0] 
-		},
+  createMarkers() {
+    if (this.results && this.results.data) {
+      this.center = {
+        lat: this.results.data.location.coordinates[1],
+        lng: this.results.data.location.coordinates[0]
+      };
+      this.markers = [{
+        //      position: { lat: 42.335960, lng: -83.049750 },
+        position: {
+          lat: this.results.data.location.coordinates[1],
+          lng: this.results.data.location.coordinates[0]
+        },
         label: {
-        color: 'yellow',
-        text: this.results.data.city
-      },
-      title: "Detroit",
-      options: { animation: google.maps.Animation.BOUNCE }
-    }]
-		}
-	}
-	
-	ngOnChanges() {
-		this.createMarkers();
-		
-	}
+          color: 'yellow',
+          text: this.results.data.city
+        },
+        title: "Detroit",
+        options: { animation: google.maps.Animation.BOUNCE }
+      }]
+    }
+  }
+
+  ngOnChanges() {
+    this.createMarkers();
+
+  }
 
   ngOnInit() {
-	  console.log(this.results);
+    console.log(this.results);
     navigator.geolocation.getCurrentPosition(position => {
       this.center = {
         lat: position.coords.latitude,
