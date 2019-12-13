@@ -15,6 +15,7 @@ export class ResultsComponent {
   results: any;
   cities: any;
   stateCities: any;
+  cityResults: any;
 
   constructor(private route: ActivatedRoute, private search: SearchService) { }
   ngOnInit() {
@@ -27,7 +28,7 @@ export class ResultsComponent {
     })
 
     this.route.queryParams.subscribe(queryParams => {
-      this.search.fetchCityList(queryParams).subscribe(data => {
+      this.search.fetchCityList(queryParams).subscribe((data: any) => {
         this.cities = data.data;
         console.log(this.cities);
 		   this.cityList();
@@ -36,54 +37,27 @@ export class ResultsComponent {
 	 
   }
 	
-	
-	
-//	for (let this.city of this.cities) {
-//    console.log(this.city);
-//}
-	
-	
+
 cityList() {
 for (let i = 0; i < this.cities.length; i++){
 let stateCities = this.cities[i];
-   console.log(stateCities);
+	console.log(stateCities);
+	this.route.queryParams.subscribe(queryParams => {
+      this.search.fetchData({
+		  state: queryParams.state,
+		  city: stateCities.city
+	  }).subscribe(data => {
+        console.log(data);
+		 this.cityResults = data;
+		  
+      })
+    })
+	
 
 	}
 	
 }
 	
-	
-//	cityList() {
-//		this.cities.data.forEach(function(item,i){
-//  		this.stateCities[i]=item;
-//});
-//		console.log(this.stateCities);
-//	}
-
-
-		
-//	  	for (let i = 0; i < this.cities.data && this.cities.data.length; i++){
-//
-//   console.log(this.cities[i]);
-//
-//		
-//	}
-
-
-
-//	  ngOnChanges() {
-//		this.cityList();	
-//	}
-
-
-
-	  
-//let stateCities = this.cities.data;
-//
-//for (var stateCity of stateCities) {
-//  console.log(stateCity); 
-//}
-	  
-	  
+  
   
 }

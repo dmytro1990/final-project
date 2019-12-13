@@ -1,5 +1,5 @@
 <app-search></app-search>
-<app-map [results]="results"></app-map>
+<app-map [results]="results" [cityResults]="cityResults"></app-map>
 <h1>{{ results?.data.city }}, {{ results?.data.state }}</h1>
 <h1>AQI China: {{ results?.data.current.pollution.aqicn }}</h1>
 <h1>AQI US: {{ results?.data.current.pollution.aqius }}</h1>

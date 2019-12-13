@@ -17,6 +17,7 @@ declare global {
 export class MapComponent implements OnInit {
 	
 @Input() results: any;
+@Input() cityResults: any;	
 
   markers: any[] = [];
 
@@ -29,22 +30,67 @@ export class MapComponent implements OnInit {
     disableDoubleClickZoom: true,
     maxZoom: 15,
     minZoom: 8,
+//		icon: google.maps.SymbolPath.CIRCLE,
+	
+		
   }
 	createMarkers() {
-		if (this.results && this.results.data) {
-		this.markers = [{
-//      position: { lat: 42.335960, lng: -83.049750 },
-		position: { lat: this.results.data.location.coordinates[1], 
-				    lng: this.results.data.location.coordinates[0] 
-		},
+		 if (this.cityResults && this.cityResults.data) {
+      this.center = {
+        lat: this.results.data.location.coordinates[1],
+        lng: this.results.data.location.coordinates[0]
+      };
+      this.markers = [{
+        //      position: { lat: 42.335960, lng: -83.049750 },
+        position: {
+          lat: this.results.data.location.coordinates[1],
+          lng: this.results.data.location.coordinates[0]
+        },
         label: {
         color: 'yellow',
-        text: this.results.data.city
+        text: this.results.data.city,
       },
       title: "Detroit",
-      options: { animation: google.maps.Animation.BOUNCE }
-    }]
+      options: { animation: google.maps.Animation.BOUNCE },
+		 icon: google.maps.SymbolPath.CIRCLE 
+		 
+    }, 
+					  
+		{
+        position: {
+          lat: this.cityResults.data.location.coordinates[1],
+          lng: this.cityResults.data.location.coordinates[0]
+        },
+        label: {
+        color: 'yellow',
+        text: this.cityResults.data.city,
+      },
+      title: "",
+      options: { animation: google.maps.Animation.BOUNCE },
+		 icon: google.maps.SymbolPath.CIRCLE 
+		 
+    }			  
+					 ]
 		}
+		
+//		 if (this.cityResults && this.cityResults.data) {
+//      
+//      this.markers = [{
+//        //      position: { lat: 42.335960, lng: -83.049750 },
+//        position: {
+//          lat: this.cityResults.data.location.coordinates[1],
+//          lng: this.cityResults.data.location.coordinates[0]
+//        },
+//        label: {
+//        color: 'yellow',
+//        text: this.cityResults.data.city,
+//      },
+//      title: "",
+//      options: { animation: google.maps.Animation.BOUNCE },
+//		 icon: google.maps.SymbolPath.CIRCLE 
+//		 
+//    }]
+//		}
 	}
 	
 	ngOnChanges() {
