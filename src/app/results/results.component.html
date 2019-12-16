@@ -1,5 +1,7 @@
 <app-search></app-search>
+<!--<section class="map-box">-->
 <app-map [results]="results" [cityResults]="cityResults"></app-map>
+<!--</section>	-->
 <div class="container">
 <h1 class="location"> Air Quality in {{ results?.data.city }}, {{ results?.data.state }}</h1>
 <div class="block">
@@ -17,6 +19,33 @@ Pollution Measurement US: {{ results?.data.current.pollution.mainus }}<br>
 Temperature in Celsius: {{ results?.data.current.weather.tp }}
 </div>
 </div>
+
+
+
+
+
+
+<!--
+<div class="results-header">
+    <p>{{ results?.data.city }}, {{ results?.data.state }}</p>
+</div>
+
+<div class="aqi">
+    <p>AQI US: {{ results?.data.current.pollution.aqius }}</p>
+</div>
+
+<div class="pollution">
+    <p>Pollution Measurement US: {{ results?.data.current.pollution.mainus }}</p>
+</div>
+
+<div class="temp">
+    <p>temperature in celsius: {{ results?.data.current.weather.tp }}</p>
+</div>
+
+<div class="meaning">
+    <h2>What does this mean?</h2>
+</div>
+-->
 
 <!--
 <h1>{{ results?.data.city }}, {{ results?.data.state }}</h1>

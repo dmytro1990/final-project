@@ -37,7 +37,6 @@ this.isGreen = true;
 	}
 
   	zoom = 10
-	icon: google.maps.Icon
     center: google.maps.LatLngLiteral
     options: google.maps.MapOptions = {
     mapTypeId: 'terrain',
@@ -309,15 +308,7 @@ this.isGreen = true;
 ]
         }
 		
-	ngOnInit() {
-	  console.log(this.results);
-    navigator.geolocation.getCurrentPosition(position => {
-      this.center = {
-         lat: this.results.data.location.coordinates[1],
-          lng: this.results.data.location.coordinates[0]
-      }
-    })
-  }
+	
 		
   
 	createMarkers() {
@@ -357,6 +348,7 @@ this.isGreen = true;
 		 }
 		 }
 		
+	
 		
 //		 if (this.cityResults && this.cityResults.data) {
 //      
@@ -387,6 +379,15 @@ this.isGreen = true;
 		
 	}
 	
+	ngOnInit() {
+	  console.log(this.results);
+    navigator.geolocation.getCurrentPosition(position => {
+      this.center = {
+         lat: this.results.data.location.coordinates[1],
+          lng: this.results.data.location.coordinates[0]
+      }
+    })
+  }
 	
 
   zoomIn() {

@@ -1,4 +1,35 @@
+/*
 label {
     padding: 10px;
     font-weight: bold;
+}*/
+
+.form-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+mat-form-field {
+    color: #F26444;
+    margin-right: 50px;
+    font-size: 1rem;
+    font-weight: 400;
+
+}
+
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+    color: #F26444;
+}
+
+button {
+    font-size: 1rem;
+    background-color: #F26444;
+    color: white;
+    border-radius: 25px;
+}
+
+::ng-deep .mat-select-value-text {
+    color: #F26444;
 }

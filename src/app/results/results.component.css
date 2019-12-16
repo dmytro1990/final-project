@@ -1,3 +1,10 @@
+.map-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
 .container {
     height: 800px;
     width: 100%;

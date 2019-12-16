@@ -1,3 +1,25 @@
+
+<div class="form-box">
+  <form #form="ngForm" (ngSubmit)="handleSubmit(form.value)">
+    <mat-form-field>
+      <input matInput type="text" name="city" placeholder="City" id="city" ngModel>
+    </mat-form-field>
+      
+    <mat-form-field>
+      <label></label>
+      <mat-select placeholder="State" name="state" id="state" [(ngModel)]="selected" panelClass="options">
+        <mat-option [value]="state" *ngFor="let state of states">{{ state }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+      
+    <button mat-button>Search</button>
+      
+  </form>
+</div>
+
+
+
+<!--
 <form #form="ngForm" (ngSubmit)="handleSubmit(form.value)">
   <label for="city">City</label>
   <input type="text" name="city" id="city" ngModel>
@@ -6,4 +28,4 @@
     <option value="{{ state }}" *ngFor="let state of states">{{state}}</option>
   </select>
   <button>Search</button>
-</form>
+</form>-->
