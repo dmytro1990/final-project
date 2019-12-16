@@ -17,25 +17,315 @@ declare global {
 export class MapComponent implements OnInit {
 	
 @Input() results: any;
-@Input() cityResults: any;	
+@Input() cityResults: any[] = [];	
 
   markers: any[] = [];
+	isGreen: boolean;
+	isRed: boolean;
+	isOrange: boolean;
+	
+	pulsar(){
+  if (this.results.data.current.pollution.aqius <= 50) {
+this.isGreen = true;
+  }
+  else if (this.results.data.current.pollution.aqius >=51 && this.results.data.current.pollution.aqius <=100) {
+    this.isOrange = true;
+  }
+  else if (this.results.data.current.pollution.aqius >=101 && this.results.data.current.pollution.aqius <=150) {
+   this.isRed = true;
+  }
+	}
 
-  zoom = 10
+  	zoom = 10
+	icon: google.maps.Icon
     center: google.maps.LatLngLiteral
     options: google.maps.MapOptions = {
-    mapTypeId: 'hybrid',
-    zoomControl: false,
+    mapTypeId: 'terrain',
+    zoomControl: true,
     scrollwheel: false,
     disableDoubleClickZoom: true,
     maxZoom: 15,
     minZoom: 8,
-//		icon: google.maps.SymbolPath.CIRCLE,
-	
+	disableDefaultUI: true,
+//	drag: false,	
 		
+		
+    styles: [
+    {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "saturation": 36
+            },
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 40
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#8b9198"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#323336"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#414954"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#2e2f31"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#7a7c80"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#242427"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#202022"
+            },
+            {
+                "lightness": 29
+            },
+            {
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 18
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#393a3f"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#202022"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#393a3f"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#202022"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 19
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#202124"
+            }
+        ]
+    }
+]
+        }
+		
+	ngOnInit() {
+	  console.log(this.results);
+    navigator.geolocation.getCurrentPosition(position => {
+      this.center = {
+         lat: this.results.data.location.coordinates[1],
+          lng: this.results.data.location.coordinates[0]
+      }
+    })
   }
+		
+  
 	createMarkers() {
-		 if (this.cityResults && this.cityResults.data) {
+		  
+			
+			 if (this.results && this.results.data){
+			 
+			 
       this.center = {
         lat: this.results.data.location.coordinates[1],
         lng: this.results.data.location.coordinates[0]
@@ -46,32 +336,27 @@ export class MapComponent implements OnInit {
           lat: this.results.data.location.coordinates[1],
           lng: this.results.data.location.coordinates[0]
         },
+		 visible: false,
+		  
         label: {
         color: 'yellow',
         text: this.results.data.city,
       },
       title: "Detroit",
-      options: { animation: google.maps.Animation.BOUNCE },
-		 icon: google.maps.SymbolPath.CIRCLE 
-		 
-    }, 
+      options: { 
+		  opacity: 0
+//		  animation: google.maps.Animation.BOUNCE 
+	  },
+			 
+    } 
 					  
-		{
-        position: {
-          lat: this.cityResults.data.location.coordinates[1],
-          lng: this.cityResults.data.location.coordinates[0]
-        },
-        label: {
-        color: 'yellow',
-        text: this.cityResults.data.city,
-      },
-      title: "",
-      options: { animation: google.maps.Animation.BOUNCE },
-		 icon: google.maps.SymbolPath.CIRCLE 
-		 
-    }			  
+				  
 					 ]
-		}
+		this.pulsar();		 
+		this.addMarker();		 
+		 }
+		 }
+		
 		
 //		 if (this.cityResults && this.cityResults.data) {
 //      
@@ -91,22 +376,18 @@ export class MapComponent implements OnInit {
 //		 
 //    }]
 //		}
-	}
+	
+	
+	
+
+  
 	
 	ngOnChanges() {
 		this.createMarkers();
 		
 	}
-
-  ngOnInit() {
-	  console.log(this.results);
-    navigator.geolocation.getCurrentPosition(position => {
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      }
-    })
-  }
+	
+	
 
   zoomIn() {
     if (this.zoom < this.options.maxZoom) this.zoom++
@@ -117,41 +398,40 @@ export class MapComponent implements OnInit {
   }
 
   addMarker() {
+	   for (let i = 0; i < this.cityResults.length; i++) {
+			 this.cityResults[i];
     this.markers.push({
-      position: {
-        lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
-        lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
+		
+        position: {
+          lat: this.cityResults[i].data.location.coordinates[1],
+          lng: this.cityResults[i].data.location.coordinates[0]
+        },
+        label: {
+        color: 'yellow',
+        text: this.cityResults[i].data.city,
       },
-      label: {
-        color: 'red',
-        text: 'Marker label ' + (this.markers.length + 1),
-      },
-      title: 'Marker title ' + (this.markers.length + 1),
-      options: { animation: google.maps.Animation.BOUNCE },
+      title: "",
+      options: { animation: google.maps.Animation.BOUNCE }
+		 
+    	
+		
+		
+		
+		
+//      position: {
+//        lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
+//        lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
+//      },
+//      label: {
+//        color: 'red',
+//        text: 'Marker label ' + (this.markers.length + 1),
+//      },
+//      title: 'Marker title ' + (this.markers.length + 1),
+//      options: { animation: google.maps.Animation.BOUNCE },
     })
+	   }
   }
 
 
-  //  constructor() { }
-  //	
-  //	initMap () {
-  //  var  map  =  new  window.google.maps.Map(document.getElementById('map'),  {  
-  //    center:  new  window.google.maps.LatLng(51.505,  -0.09),  
-  //    mapTypeId:  window.google.maps.MapTypeId.ROADMAP,  
-  //    zoom:  11  
-  //});  
-  //  var  t  =  new  Date().getTime();  
-  //  var  waqiMapOverlay  =  new  window.google.maps.ImageMapType({  
-  //        getTileUrl:  function(coord,  zoom)  {  
-  //                  return  'https://tiles.waqi.info/tiles/usepa-aqi/'  +  zoom  +  "/"  +  coord.x  +  "/"  +  coord.y  +  ".png?token=AIzaSyBjiGx9DXzREA_CZEdPKleOI6fUVEqWReo";  
-  //        },  
-  //        name:  "Air  Quality",  
-  //  });  
-  //  map.overlayMapTypes.insertAt(0,waqiMapOverlay);  
-  //}
-  //
-  // ngOnInit() {
-  //    this.initMap();
-  //  }
 
 }

@@ -1,11 +1,31 @@
 <app-search></app-search>
 <app-map [results]="results" [cityResults]="cityResults"></app-map>
+<div class="container">
+<h1 class="location"> Air Quality in {{ results?.data.city }}, {{ results?.data.state }}</h1>
+<div class="block">
+<!-- <h1>AQI China: {{ results?.data.current.pollution.aqicn }}</h1> -->
+<h1>{{ results?.data.current.pollution.aqius }} AQI US</h1>
+<img id="myImg">
+<p id="rating"></p>
+<p id="conditions"></p>
+<p class="recommendations">Recommendations:</p>
+<p id="recommendations"></p></div>
+
+<div class="block">
+<!-- <h1>Pollution Measurement China: {{ results?.data.current.pollution.maincn }}</h1> -->
+Pollution Measurement US: {{ results?.data.current.pollution.mainus }}<br>
+Temperature in Celsius: {{ results?.data.current.weather.tp }}
+</div>
+</div>
+
+<!--
 <h1>{{ results?.data.city }}, {{ results?.data.state }}</h1>
 <h1>AQI China: {{ results?.data.current.pollution.aqicn }}</h1>
 <h1>AQI US: {{ results?.data.current.pollution.aqius }}</h1>
 <h1>Pollution Measurement China: {{ results?.data.current.pollution.maincn }}</h1>
 <h1>Pollution Measurement US: {{ results?.data.current.pollution.mainus }}</h1>
 <h1>temperature in celsius: {{ results?.data.current.weather.tp }}</h1>
+-->
 
 <!--
 <h1>timestamp: {{ results?.data.current.pollution.ts }}</h1>
