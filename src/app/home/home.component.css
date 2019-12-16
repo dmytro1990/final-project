@@ -1,0 +1,21 @@
+.search-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header {
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: -10px;
+}

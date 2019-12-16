@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 
 // const BASE_URL = "api.airvisual.com/v2/city?";
-const apiKey = "fe6a7207-c834-4329-96e2-d9bda2e4fed5";
+const apiKey = "939d7af6-4aa5-41fb-b9d6-ca03473503f1";
 const country = "USA";
 
 
