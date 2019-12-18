@@ -1,4 +1,3 @@
-
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from '../search/search.service';
@@ -17,6 +16,7 @@ export class ResultsComponent {
   cities: any;
   stateCities: any;
   cityResults: any[] = [];
+  temp: number;
 
   constructor(private route: ActivatedRoute, private search: SearchService) { }
   ngOnInit() {
@@ -25,7 +25,7 @@ export class ResultsComponent {
         this.results = data;
         console.log(this.results);
         this.compare();
-
+		this.convertToF();
       })
       delay(500);
       this.search.fetchCityList(queryParams).subscribe((data: any) => {
@@ -39,10 +39,7 @@ export class ResultsComponent {
 
   }
 
-  //	{
-  //		state: 'some value',
-  //			city: 'some city'
-  //	}
+	
   compare() {
     if (this.results.data.current.pollution.aqius <= 50) {
       //    document.getElementById("myImg").src = "assets/compman.gif";
@@ -77,7 +74,11 @@ export class ResultsComponent {
     }
   }
 
-
+	convertToF() {
+  if (this.results && this.results.data) {
+  this.temp = (this.results.data.current.weather.tp * (9/5)) + 32;
+  }
+}
 
 
   cityList() {

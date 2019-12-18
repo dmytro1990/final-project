@@ -46,7 +46,7 @@ body {
 .pulse_marker:after {
     content: "";
     position: absolute;
-    background-color: rgba(0, 248, 7, .2);
+    background-color: rgba(0, 248, 7, .7);
     border: 3px dotted rgba(0, 248, 7, 1);
     border-radius: 100%;
 
@@ -59,24 +59,24 @@ body {
  
   .pulse_marker:before 
   {
-    left: -27px;
-    top: -27px;
-    width: 64px;
-    height: 64px;
+    left: -40px;
+    top: -40px;
+    width: 90px;
+    height: 90px;
   } 
   .pulse_marker:after
   {
-    left: -59px;
-    top: -59px;
-    width: 128px;
-    height: 128px;
+    left: -145px;
+    top: -145px;
+    width: 300px;
+    height: 300px;
   }
 
 .pulse_marker2:before,
 .pulse_marker2:after {
     content: "";
     position: absolute;
-    background-color: rgba(248, 0, 7, .2);
+    background-color: rgba(248, 0, 7, .7);
     border: 3px dotted rgba(248, 0, 7, 1);
     border-radius: 100%;
 
@@ -89,24 +89,24 @@ body {
  
   .pulse_marker2:before 
   {
-    left: -27px;
-    top: -27px;
-    width: 64px;
-    height: 64px;
+    left: -40px;
+    top: -40px;
+    width: 90px;
+    height: 90px;
   } 
   .pulse_marker2:after
   {
-    left: -59px;
-    top: -59px;
-    width: 128px;
-    height: 128px;
+     left: -145px;
+    top: -145px;
+    width: 300px;
+    height: 300px;
   }
 
 .pulse_marker3:before,
 .pulse_marker3:after {
     content: "";
     position: absolute;
-    background-color: rgba(242, 100, 68, .2);
+    background-color: rgba(242, 100, 68, .7);
     border: 3px dotted rgba(242, 100, 68, 1);
     border-radius: 100%;
 
@@ -119,17 +119,17 @@ body {
  
   .pulse_marker3:before 
   {
-    left: -27px;
-    top: -27px;
-    width: 64px;
-    height: 64px;
+    left: -40px;
+    top: -40px;
+    width: 90px;
+    height: 90px;
   } 
   .pulse_marker3:after
   {
-    left: -59px;
-    top: -59px;
-    width: 128px;
-    height: 128px;
+     left: -145px;
+    top: -145px;
+    width: 300px;
+    height: 300px;
   }
 
 #shadow-box {

@@ -1,10 +1,10 @@
 <!--<div id="map" style='height:380px;'></div>-->
 
 <google-map id="map" height="500px" width="100%" [zoom]="zoom" [center]="center" [options]="options">
-  <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title"
-    [options]="marker.options" >
+  <map-marker #markerElem *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title"
+    [options]="marker.options" (mapClick)="openInfo(markerElem, marker.info)">
   </map-marker>
-	
+	<map-info-window>{{ infoContent }}</map-info-window>
 <div class="pulse_holder">
   <span [ngClass]="{'pulse_marker': isGreen, 
                  'pulse_marker2': isRed, 
@@ -12,6 +12,8 @@
 </div>
 <!--	<div id="shadow-box"></div>-->
 </google-map>
+
+<!--[ngStyle]="{'background-color': 'blue'}"-->
 <!--
 <div>Latitude: {{ results?.data.location.coordinates[1] }}</div>
 <div>Longitude: {{ results?.data.location.coordinates[0] }}</div>

@@ -14,7 +14,7 @@ const routes: Routes = [
    resolve: { results: ResolverService
   	} 
   },
-  { path: "**", redirectTo: "/" }
+  { path: "**", redirectTo: "/home" }
 ];
 
 @NgModule({

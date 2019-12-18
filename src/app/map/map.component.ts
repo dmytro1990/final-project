@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchService } from '../search/search.service';
 import { MapInfoWindow, MapMarker } from '@angular/google-maps';
-
+import { ViewChild } from '@angular/core'
 
 
 declare global {
@@ -14,15 +14,27 @@ declare global {
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit {
-
+export class MapComponent implements OnInit { 
+  @ViewChild(MapInfoWindow, { static: false }) infoWindow: MapInfoWindow
   @Input() results: any;
   @Input() cityResults: any[];
+	
 
+  
+
+infoContent: string;
   markers: any[] = [];
   isGreen: boolean;
   isRed: boolean;
   isOrange: boolean;
+//	info: MapInfoWindow
+	
+openInfo(marker: MapMarker, content) {
+	    this.infoContent = "CONTENT";
+    this.infoWindow.open(marker)
+  }
+ 
+	
 
   pulsar() {
     if (this.results.data.current.pollution.aqius <= 50) {
@@ -46,7 +58,8 @@ export class MapComponent implements OnInit {
     maxZoom: 15,
     minZoom: 8,
     disableDefaultUI: true,
-    //	drag: false,	
+    draggable: false,
+   	
 
 
     styles: [
@@ -327,15 +340,16 @@ export class MapComponent implements OnInit {
           lat: this.results.data.location.coordinates[1],
           lng: this.results.data.location.coordinates[0]
         },
+	 
         visible: false,
 
         label: {
-          color: 'yellow',
-          text: this.results.data.city,
+          color: 'white',
+          text: '' + this.results.data.current.pollution.aqius,
         },
-        title: "Detroit",
+        title: this.results.data.city,
         options: {
-          opacity: 1
+          opacity: .8
           //		  animation: google.maps.Animation.BOUNCE 
         },
 
@@ -344,9 +358,14 @@ export class MapComponent implements OnInit {
 
       ]
       this.pulsar();
+//	 this.getIcon();	
     }
   }
 
+	
+// getIcon() {
+//	 icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+// }
 
 
   //		 if (this.cityResults && this.cityResults.data) {
@@ -380,6 +399,12 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
+//	  	const markers = new google.maps.Marker({
+////  position:myCenter,
+//  icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+//});
+
+
     // console.log(this.results);
     // navigator.geolocation.getCurrentPosition(position => {
     //   this.center = {
@@ -401,36 +426,29 @@ export class MapComponent implements OnInit {
   addMarker() {
     if (this.cityResults.length) {
       for (let i = 0; i < this.cityResults.length; i++) {
-        this.cityResults[i];
+        this.cityResults[i];  
         this.markers.push({
 
           position: {
             lat: this.cityResults[i].data.location.coordinates[1],
             lng: this.cityResults[i].data.location.coordinates[0]
           },
+//			color: 'blue',
           label: {
-            color: 'yellow',
-            text: this.cityResults[i].data.city,
+            color: 'white',
+//            text: this.cityResults[i].data.city,
+			 text: '' + this.cityResults[i].data.current.pollution.aqius,
           },
-          title: "",
-          options: { animation: google.maps.Animation.BOUNCE }
+          title: this.cityResults[i].data.city,
+          options: { animation: google.maps.Animation.DROP,
+				   	 opacity: .8
+				   },
+			
+//			icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
 
 
-
-
-
-
-          //      position: {
-          //        lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
-          //        lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
-          //      },
-          //      label: {
-          //        color: 'red',
-          //        text: 'Marker label ' + (this.markers.length + 1),
-          //      },
-          //      title: 'Marker title ' + (this.markers.length + 1),
-          //      options: { animation: google.maps.Animation.BOUNCE },
         })
+		  
       }
     }
   }
