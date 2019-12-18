@@ -35,6 +35,7 @@ button {
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    margin-bottom: 10px;
 }
 
 mat-form-field {

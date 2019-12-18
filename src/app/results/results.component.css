@@ -3,71 +3,82 @@
     justify-content: center;
 }
 
-.air {
-    background-color: #038C8C;
-    display: flex;
-}
-
-.pollution {
-    background-color: #F2DCC2;
-    display: flex;
-}
-
-.temp {
-    background-color:#F26444;
-    display: flex;
-}
-
-
-
-/*
-.map-box {
-    display: flex;
-    justify-content: center;
+.results-box {
     width: 100%;
 }
 
-
-.container {
-    height: 800px;
-    width: 100%;
-    background: #9fb0bf;
-    margin: 0 auto;
-    position: relative;
-}
-
-.block {
-    background: white;
-    height: 400px;
-    width: 300px;
-    float: left;
-    margin: 10px;
+.results {
+    border-radius: 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color:rgb(188,226,194);
+    box-shadow: none;
     padding: 10px;
-    border-radius: 10px;
-    -webkit-box-shadow: 0 10px 6px -6px #777;
-       -moz-box-shadow: 0 10px 6px -6px #777;
-            box-shadow: 0 10px 6px -6px #777;
 }
 
-#rating {
-    font-size: 20px;
-    font-weight: bold;
+p {
+    text-align: left;
 }
 
-#conditions {
-    font-size: 14px;
+mat-expansion-panel {
+    border-radius: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: rgb(188,226,194);
+    
 }
 
-#recommendations {
-    font-size: 14px;
+mat-panel-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
-.recommendations {
-    font-size: 20px;
-    font-weight: bold;
+h1 {
+    font-size: 3rem;
+    font-weight: 900;
 }
 
-.location {
-    padding: 15px;
-    align-content: center;
-}*/
+@media screen and (max-width: 599px) {
+    .city-title {
+        text-align: center;
+    }
+
+    p {
+        text-align: left;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 959px) {
+    .city-title {
+        text-align: center;
+    }
+
+    p {
+        text-align: left;
+    }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1024px) {
+    .results {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1919px) {
+    .results{
+        width: 33%;
+    }
+
+}
+
+@media screen and (min-width: 1920px) and (max-width: 5000px) {
+    .results{
+        width: 33%;
+    }
+}
+

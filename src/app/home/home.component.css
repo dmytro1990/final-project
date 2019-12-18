@@ -43,6 +43,12 @@ h3 {
     margin-top: -10px;
 }
 
+/* .background-image-box {
+    position: fixed;
+    bottom: 30px;
+    z-index: -1;
+} */
+
 /* media queries */ 
 
 @media screen and (max-width: 599px) {
