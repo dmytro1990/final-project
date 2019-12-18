@@ -1,24 +1,76 @@
 <app-search></app-search>
+
 <!--<section class="map-box">-->
 <app-map [results]="results" [cityResults]="cityResults"></app-map>
 <!--</section>	-->
-<div class="container">
+
+<section class="city-title-box"
+fxLayout
+fxLayout.xs="column"
+fxLayout.sm="column"
+fxLayoutAlign="center"
+>
+    <div class="city-title">
+        <h2 class="location"> Air Quality in {{ results?.data.city }}, {{ results?.data.state }}</h2>
+    </div>
+</section>
+
+<section class="container results-box" fxLayout
+fxLayout.xs="column" 
+fxLayout.sm="column"
+fxLayoutAlign="center"
+<!-- fxLayoutGap.xs="column"
+fxLayoutGap.sm="column" -->
+>
+    <mat-card class="results air"
+    fxFlexOrder="1">
+        <h3>The air quality is {{ results?.data.current.pollution.aqius }} 
+        </h3>
+
+        <img id="myImg">
+
+        <p id="rating"></p>
+
+        <p id="conditions"></p>
+
+        <p class="recommendations">Recommendations:</p>
+
+        <p id="recommendations"></p>
+    </mat-card>
+
+    <mat-card  class="results pollution"
+    fxFlexOrder="2">
+        <h2>The pollution measurement is {{ results?.data.current.pollution.mainus }}</h2>
+    </mat-card>
+
+    <mat-card class="results temp"
+    fxFlexOrder="3">
+        <h2>It's {{ results?.data.current.weather.tp }} outside</h2>
+    </mat-card>
+</section>
+
+
+
+
+
+
+<!-- <div class="container">
 <h1 class="location"> Air Quality in {{ results?.data.city }}, {{ results?.data.state }}</h1>
-<div class="block">
+<div class="block"> -->
 <!-- <h1>AQI China: {{ results?.data.current.pollution.aqicn }}</h1> -->
-<h1>{{ results?.data.current.pollution.aqius }} AQI US</h1>
+<!-- <h1>{{ results?.data.current.pollution.aqius }} AQI US</h1>
 <img id="myImg">
 <p id="rating"></p>
 <p id="conditions"></p>
 <p class="recommendations">Recommendations:</p>
-<p id="recommendations"></p></div>
-
-<div class="block">
+<p id="recommendations"></p></div> -->
+<!-- 
+<div class="block"> -->
 <!-- <h1>Pollution Measurement China: {{ results?.data.current.pollution.maincn }}</h1> -->
-Pollution Measurement US: {{ results?.data.current.pollution.mainus }}<br>
+<!-- Pollution Measurement US: {{ results?.data.current.pollution.mainus }}<br>
 Temperature in Celsius: {{ results?.data.current.weather.tp }}
 </div>
-</div>
+</div> -->
 
 
 
