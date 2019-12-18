@@ -24,6 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule }  from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   	MatButtonModule,
   	MatInputModule,
   	MatSelectModule,
-  	FlexLayoutModule
+  	FlexLayoutModule,
+	MatCardModule
       
   ],
   providers: [ ApiService, SearchService, ResolverService ],

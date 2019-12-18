@@ -1,3 +1,26 @@
+.city-title-box {
+    display: flex;
+    justify-content: center;
+}
+
+.air {
+    background-color: #038C8C;
+    display: flex;
+}
+
+.pollution {
+    background-color: #F2DCC2;
+    display: flex;
+}
+
+.temp {
+    background-color:#F26444;
+    display: flex;
+}
+
+
+
+/*
 .map-box {
     display: flex;
     justify-content: center;
@@ -47,4 +70,4 @@
 .location {
     padding: 15px;
     align-content: center;
-}
+}*/
