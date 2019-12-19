@@ -23,11 +23,11 @@ fxLayoutAlign="center">
         <h2>The air quality is {{ results?.data.current.pollution.aqius }} 
         </h2>
 
-        <img id="myImg" alt="img">
+        <img id="myImg" width="80" height="80" alt="img"/>
 
         <p id="rating"></p>
 
-    
+
     </mat-card>
 
     <mat-card  class="results pollution"
@@ -37,7 +37,7 @@ fxLayoutAlign="center">
 
     <mat-card class="results temp"
     fxFlexOrder="3">
-        <h2>It's {{ temp }} outside</h2>
+        <h2>It's {{ temp }} &#8457; outside</h2>
     </mat-card>
 </section>
 
@@ -49,10 +49,10 @@ fxLayoutAlign="center">
                    What does this mean?
                </mat-panel-title>
            </mat-expansion-panel-header>
-
-           <p id="conditions"></p>    
-
-        </mat-expansion-panel>
+           <p>
+                The Air Quality Index (AQI) is an index for reporting daily air quality. It tells you how clean or polluted your air is, and what associated health effects might be a concern for you. The AQI focuses on health effects you may experience within a few hours or days after breathing polluted air.</p>
+           <p id="conditions"></p>
+         </mat-expansion-panel>
     </div>
 
     <div class="what-do">
@@ -64,11 +64,7 @@ fxLayoutAlign="center">
            </mat-expansion-panel-header>
 
            <p id="recommendations"></p>
-           
-           <!-- <p>Aliquam ut porttitor leo a diam sollicitudin tempor id eu. Platea dictumst vestibulum rhoncus est. A scelerisque purus semper eget duis at tellus at. Ornare arcu odio ut sem nulla. Cursus turpis massa tincidunt dui ut ornare. Nunc sed velit dignissim sodales ut eu sem. Elit pellentesque habitant morbi tristique senectus. Fermentum odio eu feugiat pretium nibh. Id nibh tortor id aliquet lectus proin nibh. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget.</p>
-
-           <p>At risus viverra adipiscing at in tellus integer feugiat. In iaculis nunc sed augue lacus viverra vitae congue. Mi quis hendrerit dolor magna eget est lorem ipsum. Mollis aliquam ut porttitor leo a diam sollicitudin tempor. Sed felis eget velit aliquet. Vulputate mi sit amet mauris. Porttitor lacus luctus accumsan tortor posuere ac ut consequat. Curabitur gravida arcu ac tortor dignissim convallis aenean. Vulputate dignissim suspendisse in est ante. Ipsum dolor sit amet consectetur adipiscing elit. Interdum velit laoreet id donec ultrices tincidunt arcu non. In metus vulputate eu scelerisque felis imperdiet proin. Maecenas ultricies mi eget mauris pharetra et. Egestas integer eget aliquet nibh. Urna duis convallis convallis tellus. Dolor morbi non arcu risus quis varius. A diam sollicitudin tempor id. Volutpat est velit egestas dui id ornare arcu odio. Fames ac turpis egestas sed tempus urna et pharetra pharetra. Ornare massa eget egestas purus viverra accumsan in nisl.</p> -->
-       </mat-expansion-panel>
+        </mat-expansion-panel>
     </div>
 </section>
 
