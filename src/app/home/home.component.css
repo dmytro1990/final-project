@@ -20,6 +20,18 @@ h3 {
     margin-top: -10px;
 }
 
+background-img-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+img {
+    max-width: 92.5%;
+    max-height: 92.5%;
+}
+
 
 /* media queries */ 
 

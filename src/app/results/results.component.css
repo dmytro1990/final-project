@@ -14,21 +14,25 @@
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-    background-color:rgb(188,226,194);
+    background-color:#F4EEE7;
     box-shadow: none;
     padding: 10px;
 }
 
+.air, .pollution, .temp {
+    padding: 25px;
+    color: #038C8C;
+}
+
 p {
     text-align: left;
-    color: #F26444;
     font-size: 1.5rem;
+    line-height: ;
 }
 
 mat-expansion-panel {
     border-radius: 0px;
     padding: 20px;
-    background-color: rgb(188,226,194);
     box-shadow: none;
     text-align: center;
 }
@@ -44,7 +48,30 @@ mat-panel-title {
     font-size: 2rem;
     font-weight: 700;
     box-shadow: none;
-    color: #F26444;
+}
+
+.what-meaning {
+    background-color:rgb(188,226,194);
+}
+
+.what-meaning mat-panel-title {
+    color: #038C8C;
+}
+
+.what-meaning p {
+    color: #038C8C;
+}
+
+.what-do {
+    background-color: #038C8C;
+}
+
+.what-do mat-panel-title {
+    color: #F4EEE7;
+}
+
+.what-do p {
+    color: #F4EEE7;
 }
 
 h1 {
@@ -53,9 +80,14 @@ h1 {
 }
 
 h2 {
-    color: #F26444;
+    color: #038C8C;
     font-weight: 700;
     font-size: 2rem;
+}
+
+img {
+    width: 80px;
+    height: 80px;
 }
 
 @media screen and (max-width: 599px) {
@@ -77,7 +109,7 @@ h2 {
         font-size: 1rem;
     }
 
-    .pollution {
+    .air, .pollution, .temp {
         text-align: center;
     }
 }
@@ -90,12 +122,20 @@ h2 {
     p {
         text-align: left;
     }
+
+    .air, .pollution, .temp {
+        text-align: center;
+    }
 }
 
 @media screen and (min-width: 960px) and (max-width: 1024px) {
     .results {
         width: 100%;
         flex-wrap: wrap;
+    }
+
+    .air, .pollution, .temp {
+        text-align: center;
     }
 }
 
@@ -104,11 +144,7 @@ h2 {
         width: 33%;
     }
 
-    .pollution {
-        text-align: center;
-    }
-
-    .temp {
+    .air, .pollution, .temp {
         text-align: center;
     }
 }
@@ -116,6 +152,10 @@ h2 {
 @media screen and (min-width: 1920px) and (max-width: 5000px) {
     .results{
         width: 33%;
+    }
+
+    .air, .pollution, .temp {
+        text-align: center;
     }
 }
 

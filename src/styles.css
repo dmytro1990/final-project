@@ -81,12 +81,12 @@ body {
 }
 
 a {
-    color: #F26444;
+    color: #038C8C;
     text-decoration: none;
 }
 
 a:hover {
-    color: white;
+    color: #F26444;
 }
 
 @media screen and (max-width: 599px) {

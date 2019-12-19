@@ -68,4 +68,8 @@ button {
         align-items: center;
         flex-direction: row;
     }
+
+    button {
+        width: 100%;
+    }
 }

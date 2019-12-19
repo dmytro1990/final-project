@@ -25,6 +25,7 @@ export class ResultsComponent {
         this.results = data;
         console.log(this.results);
         this.compare();
+        this.image();
 		this.convertToF();
       })
       delay(500);
@@ -79,6 +80,27 @@ export class ResultsComponent {
   this.temp = (this.results.data.current.weather.tp * (9/5)) + 32;
   }
 }
+
+image() {
+  if (this.results.data.current.pollution.aqius <= 50) {
+      (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-05.png";
+  }
+  else if (this.results.data.current.pollution.aqius >=51 && this.results.data.current.pollution.aqius <=100) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-03.png";
+  }
+  else if (this.results.data.current.pollution.aqius >=101 && this.results.data.current.pollution.aqius <=150) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-03.png";
+   }
+  else if (this.results.data.current.pollution.aqius >=151 && this.results.data.current.pollution.aqius <=200) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-02.png";
+  }
+  else if (this.results.data.current.pollution.aqius >=201 && this.results.data.current.pollution.aqius <=300) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-01.png";
+  }
+  else if (this.results.data.current.pollution.aqius >=301 && this.results.data.current.pollution.aqius >=500) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-01.png";}
+}
+
 
 
   cityList() {
