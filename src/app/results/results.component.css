@@ -1,73 +1,218 @@
+#overlay {
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	background-color: rgba(255,255,255,.4);
+	text-align: center;
+	align-content: center;
+	z-index: 1500;
+	margin: auto 0; 
+	
+}
+
+#spinner {
+	position: relative;
+	z-index: 1501;
+	margin: auto 0;
+	top: 50%;
+	
+}
+
 .city-title-box {
     display: flex;
     justify-content: center;
 }
 
-.air {
-    background-color: #038C8C;
-    display: flex;
+.results-box {
+    width: 100%;
+    background-color: rgb(188,226,194);
 }
 
-.pollution {
-    background-color: #F2DCC2;
+.results {
+    border-radius: 0px;
     display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color:#F4EEE7;
+    box-shadow: none;
+    padding: 10px;
 }
 
-.temp {
-    background-color:#F26444;
-    display: flex;
+.air, .pollution, .temp {
+    padding: 25px;
+    color: #038C8C;
 }
 
+.rating-map-box {
+    background-color: #F4EEE7;
+    padding: 10px;
+}
 
-
-/*
-.map-box {
+.rt-map {
+    width: 100%;
+    padding: 25px;
     display: flex;
     justify-content: center;
-    width: 100%;
+    align-items: center;
 }
 
-
-.container {
-    height: 800px;
-    width: 100%;
-    background: #9fb0bf;
-    margin: 0 auto;
-    position: relative;
+.rating-map {
+    width: 414px;
+    height: 125px;
 }
 
-.block {
-    background: white;
-    height: 400px;
-    width: 300px;
-    float: left;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    -webkit-box-shadow: 0 10px 6px -6px #777;
-       -moz-box-shadow: 0 10px 6px -6px #777;
-            box-shadow: 0 10px 6px -6px #777;
+p {
+    text-align: left;
+    font-size: 1.5rem;
+    line-height: 150%;
 }
 
-#rating {
-    font-size: 20px;
-    font-weight: bold;
+mat-expansion-panel {
+    border-radius: 0px;
+    padding: 20px;
+    box-shadow: none;
+    text-align: center;
 }
 
-#conditions {
-    font-size: 14px;
+mat-expansion-panel-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#recommendations {
-    font-size: 14px;
+mat-panel-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    box-shadow: none;
 }
 
-.recommendations {
-    font-size: 20px;
-    font-weight: bold;
+.what-meaning {
+    background-color:rgb(188,226,194);
 }
 
-.location {
-    padding: 15px;
-    align-content: center;
-}*/
+.what-meaning mat-panel-title {
+    color: #038C8C;
+}
+
+.what-meaning p {
+    color: #038C8C;
+}
+
+.what-do {
+    background-color: #038C8C;
+}
+
+.what-do mat-panel-title {
+    color: #F4EEE7;
+}
+
+.what-do p {
+    color: #F4EEE7;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+h2 {
+    color: #038C8C;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+img {
+    width: 80px;
+    height: 80px;
+}
+
+@media screen and (max-width: 599px) {
+    h1 {
+        font-size: 2.5rem;
+        padding: 10px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .city-title {
+        text-align: center;
+    }
+
+    p {
+        text-align: left;
+        font-size: 1rem;
+    }
+
+    .air, .pollution, .temp {
+        text-align: center;
+    }
+
+    .rating-map-box {
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rt-map {
+        padding: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rating-map {
+        width: 275px;
+        height: 83px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 959px) {
+    .city-title {
+        text-align: center;
+    }
+
+    p {
+        text-align: left;
+    }
+
+    .air, .pollution, .temp {
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1024px) {
+    .results {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .air, .pollution, .temp {
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1919px) {
+    .results{
+        width: 33%;
+    }
+
+    .air, .pollution, .temp {
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 1920px) and (max-width: 5000px) {
+    .results{
+        width: 33%;
+    }
+
+    .air, .pollution, .temp {
+        text-align: center;
+    }
+}

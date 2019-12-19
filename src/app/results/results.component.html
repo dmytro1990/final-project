@@ -1,5 +1,7 @@
+<div id="overlay" *ngIf="loading">
+<img id="spinner" src="assets/airific_pinwheel_300x300.gif" alt="spinner"/>
+</div>
 <app-search></app-search>
-<app-map [results]="results" [cityResults]="cityResults"></app-map>
 
 <section class="city-title-box"
 fxLayout
@@ -8,106 +10,72 @@ fxLayout.sm="column"
 fxLayoutAlign="center"
 >
     <div class="city-title">
-        <h2 class="location"> Air Quality in {{ results?.data.city }}, {{ results?.data.state }}</h2>
+        <h1 class="location"> Air Quality in {{ results?.data.city }}, {{ results?.data.state }}</h1>
     </div>
 </section>
+
+<app-map [results]="results" [cityResults]="cityResults"></app-map>
+
+<section class="rating-map-box">
+    <div class="rt-map">
+        <img class="rating-map" src="/assets/color-rating-small.png" alt="map box">
+    </div>
+</section> 
 
 <section class="container results-box" fxLayout
 fxLayout.xs="column" 
 fxLayout.sm="column"
 fxLayoutAlign="center">
+
     <mat-card class="results air"
     fxFlexOrder="1">
-        <h3>The air quality is {{ results?.data.current.pollution.aqius }} 
-        </h3>
 
         <img id="myImg" alt="img">
-
+        <h2>The air quality is {{ results?.data.current.pollution.aqius }} 
+        </h2>
         <p id="rating"></p>
 
-        <p id="conditions"></p>
-
-        <p class="recommendations">Recommendations:</p>
-
-        <p id="recommendations"></p>
+    
     </mat-card>
 
     <mat-card  class="results pollution"
     fxFlexOrder="2">
+        <img src="/assets/pollution.png" alt="img">
         <h2>The pollution measurement is {{ results?.data.current.pollution.mainus }}</h2>
     </mat-card>
 
     <mat-card class="results temp"
     fxFlexOrder="3">
-        <h2>It's {{ temp }} outside</h2>
+        <img src="/assets/temp.png" alt="img">
+        <h2>It's {{ temp }} &#8457; outside</h2>
     </mat-card>
 </section>
 
+<section class="what-box-1">
+   <div>
+       <mat-expansion-panel class="what-meaning">
+           <mat-expansion-panel-header>
+               <mat-panel-title class="meaning">
+                   What does this mean?
+               </mat-panel-title>
+           </mat-expansion-panel-header>
+<p>The Air Quality Index (AQI) is an index for reporting daily air quality. It tells you how clean or polluted your air is, and what associated health effects might be a concern for you. The AQI focuses on health effects you may experience within a few hours or days after breathing polluted air.</p>
+          
+<p id="conditions"></p>    
 
+        </mat-expansion-panel>
+    </div>
 
+    <div>
+       <mat-expansion-panel class="what-do">
+           <mat-expansion-panel-header>
+               <mat-panel-title class="do">
+                   What can I do?
+               </mat-panel-title>
+           </mat-expansion-panel-header>
 
-
-<!--
-<div class="container">
-<h1 class="location"> Air Quality in {{ results?.data.city }}, {{ results?.data.state }}</h1>
-<div class="block">
-<h1>{{ results?.data.current.pollution.aqius }} AQI US</h1>
-<img id="myImg">
-<p id="rating"></p>
-<p id="conditions"></p>
-<p class="recommendations">Recommendations:</p>
-<p id="recommendations"></p></div>
-
-<div class="block">
-Pollution Measurement US: {{ results?.data.current.pollution.mainus }}<br>
-Temperature in Fahrenheit: {{ temp }}	
-</div>
-</div>
--->
-
-
-
-
-
-
-<!--
-<div class="results-header">
-    <p>{{ results?.data.city }}, {{ results?.data.state }}</p>
-</div>
-
-<div class="aqi">
-    <p>AQI US: {{ results?.data.current.pollution.aqius }}</p>
-</div>
-
-<div class="pollution">
-    <p>Pollution Measurement US: {{ results?.data.current.pollution.mainus }}</p>
-</div>
-
-<div class="temp">
-    <p>temperature in celsius: {{ results?.data.current.weather.tp }}</p>
-</div>
-
-<div class="meaning">
-    <h2>What does this mean?</h2>
-</div>
--->
-
-<!--
-<h1>{{ results?.data.city }}, {{ results?.data.state }}</h1>
-<h1>AQI China: {{ results?.data.current.pollution.aqicn }}</h1>
-<h1>AQI US: {{ results?.data.current.pollution.aqius }}</h1>
-<h1>Pollution Measurement China: {{ results?.data.current.pollution.maincn }}</h1>
-<h1>Pollution Measurement US: {{ results?.data.current.pollution.mainus }}</h1>
-<h1>temperature in celsius: {{ results?.data.current.weather.tp }}</h1>
--->
-
-<!--
-<h1>timestamp: {{ results?.data.current.pollution.ts }}</h1>
-<h1>atmospheric pressure in hPa: {{ results?.data.current.weather.pr }}</h1>
-<h1>humidity %: {{ results?.data.current.weather.hu }}</h1>
-<h1>wind direction: {{ results?.data.current.weather.wd }}</h1>
-<h1>wind speed: {{ results?.data.current.weather.ws }}</h1>
-<h1>weather icon code: {{ results?.data.current.weather.ic }}</h1>
--->
-
-
+           <p id="recommendations"></p>
+           
+        </mat-expansion-panel>
+    </div>
+</section>

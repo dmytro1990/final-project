@@ -1,9 +1,36 @@
-/*
-body {
-	vh: 500px;
-	
+
+@media screen and (min-width: 1920px) and (max-width: 5000px) {
+  google-map {
+    width: 65;
+  }
 }
-*/
+
+map-marker {
+	z-index: 5;
+}
+
+
+#infoWindow {
+	align-content: center;
+	text-align: center;
+	margin-left: 0;
+	padding-inline-start: 0px;
+	margin-top: -5px;
+}
+
+.ts {
+	color: black;
+}
+
+h4 {
+	margin-top: -5px;
+	color: black;
+}
+
+p {
+	margin-top: -5px;
+}
+
 
 @-webkit-keyframes pulse 
   {       
@@ -17,22 +44,19 @@ body {
     100% {opacity: 0; -moz-transform: scale(1);}
   }
 
+
   .pulse_holder
   {
+	pointer-events: none;  
     display: block;
     position: absolute;
 	left: 50%;
-    top: 50%;
-/*
-	  margin: 0;
-    top: 25%;
-    left: 50%;
-*/
+    top: 75%;
     border-radius: 100%;
-	 z-index: 10;
+	 z-index: 0;
   }
     
-  .pulse_holder .pulse_marker .pulse_marker2 .pulse_marker3
+  .pulse_holder .pulse_marker .pulse_marker2 .pulse_marker3 .pulse_marker4
   {
     display: block;
     width: 18px;
@@ -132,11 +156,46 @@ body {
     height: 300px;
   }
 
-#shadow-box {
-    width: 100%;
-    height: 100%;
-    -moz-box-shadow:    inset 0 0 20px #000000;
-    -webkit-box-shadow: inset 0 0 20px #000000;
-    box-shadow:         inset 0 0 20px #000000;
-	z-index: 8;
+.pulse_marker4:before,
+.pulse_marker4:after {
+    content: "";
+    position: absolute;
+    background-color: rgba(100, 200, 7, .7);
+    border: 3px dotted rgba(100, 200, 7, 1);
+    border-radius: 100%;
+
+  /* Giving Animation Function */
+    -webkit-animation: pulse 1.5s ease-out infinite;
+    -moz-animation: pulse 1.5s ease-out infinite; 
+    border-image: initial;
+
 }
+ 
+  .pulse_marker4:before 
+  {
+    left: -40px;
+    top: -40px;
+    width: 90px;
+    height: 90px;
+  } 
+  .pulse_marker4:after
+  {
+    left: -145px;
+    top: -145px;
+    width: 300px;
+    height: 300px;
+  }
+
+@media screen and (max-width: 599px) {
+    .pulse_holder {
+		left: 50%;
+    	top: 85%;
+    }
+} 
+
+
+
+
+
+
+

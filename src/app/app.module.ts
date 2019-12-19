@@ -6,15 +6,10 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { MapComponent } from './map/map.component';
 import { ResultsComponent } from './results/results.component';
-import { AqComponent } from './aq/aq.component';
-import { ForecastComponent } from './forecast/forecast.component';
-import { SearchCriteriaComponent } from './search-criteria/search-criteria.component';
 import { SearchService } from './search/search.service';
-import { ApiService } from './api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { HomeComponent } from './home/home.component';
-import { ResolverService } from './resolver.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -32,9 +27,6 @@ import { MatCardModule } from '@angular/material/card';
     SearchComponent,
     MapComponent,
     ResultsComponent,
-    AqComponent,
-    ForecastComponent,
-    SearchCriteriaComponent,
     HomeComponent
 
   ],
@@ -56,7 +48,7 @@ import { MatCardModule } from '@angular/material/card';
 	MatCardModule
       
   ],
-  providers: [ ApiService, SearchService, ResolverService ],
+  providers: [ SearchService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

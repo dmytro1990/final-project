@@ -1,39 +1,24 @@
 <!--<div id="map" style='height:380px;'></div>-->
 
 <google-map id="map" height="500px" width="100%" [zoom]="zoom" [center]="center" [options]="options">
-  <map-marker #markerElem *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title"
-    [options]="marker.options" (mapClick)="openInfo(markerElem, marker.info)">
+  <map-marker #markerElem *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
+    [title]="marker.title" [options]="marker.options" (mapClick)="openInfo(markerElem, marker)">
   </map-marker>
-	<map-info-window>{{ infoContent }}</map-info-window>
+  <map-info-window>
+    <ul id="infoWindow">
+      <h2>{{ infoContent }}</h2>
+		<h4>AQI Rating: {{ infoContentAqi }}</h4>
+	 	<p class="ts">Last updated on:</p>
+      <p class="ts">{{ infoContentTs }}</p>
+    </ul>
+  </map-info-window>
 <div class="pulse_holder">
   <span [ngClass]="{'pulse_marker': isGreen, 
-                 'pulse_marker2': isRed, 
-                 'pulse_marker3': isOrange}" style="background-image: url('http://culturunners.com/star/00f807')"></span>
+				   'pulse_marker4': isLightGreen,
+                   'pulse_marker2': isRed,
+                   'pulse_marker3': isOrange}" style="background-image: url('http://culturunners.com/star/00f807')"></span>
 </div>
 <!--	<div id="shadow-box"></div>-->
 </google-map>
 
-<!--[ngStyle]="{'background-color': 'blue'}"-->
-<!--
-<div>Latitude: {{ results?.data.location.coordinates[1] }}</div>
-<div>Longitude: {{ results?.data.location.coordinates[0] }}</div>
--->
-<!-- Use custom zoom buttons -->
-<!--
-<button (click)="zoomIn()">Zoom in</button>
-<button (click)="zoomOut()">Zoom out</button>
--->
 
-<!--
-<map-info-window>{{ results?.data.city }}
-{{ results?.data.state }}
-AQI China: {{ results?.data.current.pollution.aqicn }}
-AQI US: {{ results?.data.current.pollution.aqius }}
-Pollution Measurement China: {{ results?.data.current.pollution.maincn }}
-Pollution Measurement US: {{ results?.data.current.pollution.mainus }}</map-info-window>
--->
-
-<!--
-<h1>{{ results?.data.city }}</h1>
-
--->

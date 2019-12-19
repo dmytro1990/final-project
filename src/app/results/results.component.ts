@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from '../search/search.service';
+import { Router } from '@angular/router';
 import { resolve } from 'url';
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms));
@@ -17,15 +18,28 @@ export class ResultsComponent {
   stateCities: any;
   cityResults: any[] = [];
   temp: number;
+	loading: boolean;
 
-  constructor(private route: ActivatedRoute, private search: SearchService) { }
+  constructor(private route: ActivatedRoute, private search: SearchService, private router: Router) { }
+	
+	
+	
+
+	
+
+
+	
   ngOnInit() {
     this.route.queryParams.subscribe(async queryParams => {
       this.search.fetchData(queryParams).subscribe(data => {
         this.results = data;
+		  this.loading = true;
+		  this.loadT();
         console.log(this.results);
         this.compare();
+        this.image();
 		this.convertToF();
+		 
       })
       delay(500);
       this.search.fetchCityList(queryParams).subscribe((data: any) => {
@@ -39,6 +53,12 @@ export class ResultsComponent {
 
   }
 
+	loadT() {
+	setTimeout((loading) => {   
+      this.loading = false;
+ }, 3000);
+	
+	}
 	
   compare() {
     if (this.results.data.current.pollution.aqius <= 50) {
@@ -72,13 +92,35 @@ export class ResultsComponent {
       document.getElementById("conditions").innerHTML = "General public and sensitive groups are at high risk to experience strong irritations and adverse health effects that could trigger other illnesses. Everyone should avoid exercise and remain indoors.";
       document.getElementById("recommendations").innerHTML = "Everyone should avoid outdoor exercise and take care to wear a pollution mask outdoors. Ventilation is discouraged. Air purifiers should be turned on.";
     }
+	
   }
 
 	convertToF() {
-  if (this.results && this.results.data) {
-  this.temp = (this.results.data.current.weather.tp * (9/5)) + 32;
+  	  if (this.results && this.results.data) {
+	  this.temp = Math.round(this.results.data.current.weather.tp * (9/5)) + 32;
   }
 }
+
+image() {
+  if (this.results.data.current.pollution.aqius <= 50) {
+      (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-05.png";
+  }
+  else if (this.results.data.current.pollution.aqius >=51 && this.results.data.current.pollution.aqius <=100) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-03.png";
+  }
+  else if (this.results.data.current.pollution.aqius >=101 && this.results.data.current.pollution.aqius <=150) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-03.png";
+   }
+  else if (this.results.data.current.pollution.aqius >=151 && this.results.data.current.pollution.aqius <=200) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-02.png";
+  }
+  else if (this.results.data.current.pollution.aqius >=201 && this.results.data.current.pollution.aqius <=300) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-01.png";
+  }
+  else if (this.results.data.current.pollution.aqius >=301 && this.results.data.current.pollution.aqius >=500) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-01.png";}
+}
+
 
 
   cityList() {

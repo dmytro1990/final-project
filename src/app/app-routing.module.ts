@@ -3,18 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { ResultsComponent } from './results/results.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
-import { ResolverService } from './resolver.service';
 
 // routes or /URL paths are declared here and exported for use in other components
 const routes: Routes = [
-  { path: "", redirectTo: "/home", pathMatch: "full" },
+  { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "home", component: HomeComponent },
   { path: "search", component: SearchComponent },
-  { path: "results", component: ResultsComponent, 
-   resolve: { results: ResolverService
-  	} 
-  },
-  { path: "**", redirectTo: "/home" }
+  { path: "results", component: ResultsComponent },
+  { path: "**", redirectTo: "home" }	
 ];
 
 @NgModule({

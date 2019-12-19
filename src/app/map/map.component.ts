@@ -20,20 +20,24 @@ export class MapComponent implements OnInit {
   @Input() cityResults: any[];
 	
 
-  
-
-infoContent: string;
   markers: any[] = [];
   isGreen: boolean;
   isRed: boolean;
   isOrange: boolean;
-//	info: MapInfoWindow
-	
-openInfo(marker: MapMarker, content) {
-	    this.infoContent = "CONTENT";
-    this.infoWindow.open(marker)
+  isLightGreen: boolean;
+  infoContent: string;
+  infoContentTs: number;	
+  infoContentAqi: number;
+
+  //	info: MapInfoWindow
+
+  openInfo(marker: MapMarker, content) {
+    this.infoContent = content.extraProps.city;
+    this.infoContentTs = content.extraProps.ts;
+	this.infoContentAqi = content.extraProps.aqi;
+    this.infoWindow.open(marker);
+    console.log(content);
   }
- 
 	
 
   pulsar() {
@@ -41,16 +45,21 @@ openInfo(marker: MapMarker, content) {
       this.isGreen = true;
     }
     else if (this.results.data.current.pollution.aqius >= 51 && this.results.data.current.pollution.aqius <= 100) {
+      this.isLightGreen = true;
+	}
+	else if (this.results.data.current.pollution.aqius >= 101 && this.results.data.current.pollution.aqius <= 150) {
       this.isOrange = true;
+
     }
-    else if (this.results.data.current.pollution.aqius >= 101 && this.results.data.current.pollution.aqius <= 150) {
+    else if (this.results.data.current.pollution.aqius >= 151 && this.results.data.current.pollution.aqius <= 200) {
       this.isRed = true;
     }
   }
+	
 
-  zoom = 10
-  center: google.maps.LatLngLiteral
-  options: google.maps.MapOptions = {
+    zoom = 10
+    center: google.maps.LatLngLiteral
+    options: google.maps.MapOptions = {
     mapTypeId: 'terrain',
     zoomControl: true,
     scrollwheel: false,
@@ -335,7 +344,6 @@ openInfo(marker: MapMarker, content) {
         lng: this.results.data.location.coordinates[0]
       };
       this.markers = [{
-        //      position: { lat: 42.335960, lng: -83.049750 },
         position: {
           lat: this.results.data.location.coordinates[1],
           lng: this.results.data.location.coordinates[0]
@@ -350,42 +358,16 @@ openInfo(marker: MapMarker, content) {
         title: this.results.data.city,
         options: {
           opacity: .8
-          //		  animation: google.maps.Animation.BOUNCE 
+        
         },
 
       }
 
 
       ]
-      this.pulsar();
-//	 this.getIcon();	
+      this.pulsar();		
     }
   }
-
-	
-// getIcon() {
-//	 icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-// }
-
-
-  //		 if (this.cityResults && this.cityResults.data) {
-  //      
-  //      this.markers = [{
-  //        //      position: { lat: 42.335960, lng: -83.049750 },
-  //        position: {
-  //          lat: this.cityResults.data.location.coordinates[1],
-  //          lng: this.cityResults.data.location.coordinates[0]
-  //        },
-  //        label: {
-  //        color: 'yellow',
-  //        text: this.cityResults.data.city,
-  //      },
-  //      title: "",
-  //      options: { animation: google.maps.Animation.BOUNCE },
-  //		 icon: google.maps.SymbolPath.CIRCLE 
-  //		 
-  //    }]
-  //		}
 
 
 
@@ -399,19 +381,7 @@ openInfo(marker: MapMarker, content) {
   }
 
   ngOnInit() {
-//	  	const markers = new google.maps.Marker({
-////  position:myCenter,
-//  icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-//});
 
-
-    // console.log(this.results);
-    // navigator.geolocation.getCurrentPosition(position => {
-    //   this.center = {
-    //     lat: this.results.data.location.coordinates[1],
-    //     lng: this.results.data.location.coordinates[0]
-    //   }
-    // })
   }
 
 
@@ -433,19 +403,20 @@ openInfo(marker: MapMarker, content) {
             lat: this.cityResults[i].data.location.coordinates[1],
             lng: this.cityResults[i].data.location.coordinates[0]
           },
-//			color: 'blue',
           label: {
             color: 'white',
-//            text: this.cityResults[i].data.city,
 			 text: '' + this.cityResults[i].data.current.pollution.aqius,
           },
           title: this.cityResults[i].data.city,
           options: { animation: google.maps.Animation.DROP,
 				   	 opacity: .8
 				   },
+		   extraProps: {
+             city: this.cityResults[i].data.city,
+             ts: this.cityResults[i].data.current.weather.ts,
+			 aqi: this.cityResults[i].data.current.pollution.aqius  
+          }
 			
-//			icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-
 
         })
 		  
