@@ -5,6 +5,7 @@
 
 .results-box {
     width: 100%;
+    background-color: rgb(188,226,194);
 }
 
 .results {
@@ -20,11 +21,13 @@
 
 p {
     text-align: left;
+    color: #F26444;
+    font-size: 1.5rem;
 }
 
 mat-expansion-panel {
     border-radius: 0px;
-    padding: 10px;
+    padding: 20px;
     background-color: rgb(188,226,194);
     box-shadow: none;
     text-align: center;
@@ -41,6 +44,7 @@ mat-panel-title {
     font-size: 2rem;
     font-weight: 700;
     box-shadow: none;
+    color: #F26444;
 }
 
 h1 {
@@ -48,13 +52,33 @@ h1 {
     font-weight: 900;
 }
 
+h2 {
+    color: #F26444;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
 @media screen and (max-width: 599px) {
+    h1 {
+        font-size: 2.5rem;
+        padding: 10px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+
     .city-title {
         text-align: center;
     }
 
     p {
         text-align: left;
+        font-size: 1rem;
+    }
+
+    .pollution {
+        text-align: center;
     }
 }
 
@@ -80,6 +104,13 @@ h1 {
         width: 33%;
     }
 
+    .pollution {
+        text-align: center;
+    }
+
+    .temp {
+        text-align: center;
+    }
 }
 
 @media screen and (min-width: 1920px) and (max-width: 5000px) {
