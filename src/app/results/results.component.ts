@@ -25,7 +25,8 @@ export class ResultsComponent {
         this.results = data;
         console.log(this.results);
         this.compare();
-		this.convertToF();
+    this.convertToF();
+    this.image();
       })
       delay(500);
       this.search.fetchCityList(queryParams).subscribe((data: any) => {
@@ -54,7 +55,7 @@ export class ResultsComponent {
     }
     else if (this.results.data.current.pollution.aqius >= 101 && this.results.data.current.pollution.aqius <= 150) {
       document.getElementById("rating").innerHTML = "Unhealthy for Sensitive Groups";
-      document.getElementById("conditions").innerHTML = "A General public and sensitive individuals in particular are at risk to experience irritation and respiratory problems.";
+      document.getElementById("conditions").innerHTML = "General public and sensitive individuals in particular are at risk to experience irritation and respiratory problems.";
       document.getElementById("recommendations").innerHTML = "The general public should greatly reduce outdoor exertion. Sensitive groups should avoid all outdoor activity and should take care to wear a pollution mask outdoors. Ventilation is discouraged. Air purifiers should be turned on if indoor air quality is unhealthy.";
     }
     else if (this.results.data.current.pollution.aqius >= 151 && this.results.data.current.pollution.aqius <= 200) {
@@ -80,6 +81,25 @@ export class ResultsComponent {
   }
 }
 
+image() {
+  if (this.results.data.current.pollution.aqius <= 50) {
+      (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-05.png";
+  }
+  else if (this.results.data.current.pollution.aqius >=51 && this.results.data.current.pollution.aqius <=100) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-04.png";
+  }
+  else if (this.results.data.current.pollution.aqius >=101 && this.results.data.current.pollution.aqius <=150) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-03.png";
+   }
+  else if (this.results.data.current.pollution.aqius >=151 && this.results.data.current.pollution.aqius <=200) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-02.png";
+  }
+  else if (this.results.data.current.pollution.aqius >=201 && this.results.data.current.pollution.aqius <=300) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-01.png";
+  }
+  else if (this.results.data.current.pollution.aqius >=301 && this.results.data.current.pollution.aqius >=500) {
+    (<HTMLImageElement>document.getElementById("myImg")).src = "assets/faces_50x50-01.png";}
+}
 
   cityList() {
     this.route.queryParams.subscribe(async queryParams => {

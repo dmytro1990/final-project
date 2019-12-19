@@ -23,15 +23,11 @@ fxLayoutAlign="center">
         <h2>The air quality is {{ results?.data.current.pollution.aqius }} 
         </h2>
 
-        <img id="myImg" alt="img">
+        <img id="myImg" width="80" height="80" alt="img"/>
 
         <p id="rating"></p>
 
-        <p id="conditions"></p>
 
-        <p class="recommendations">Recommendations:</p>
-
-        <p id="recommendations"></p>
     </mat-card>
 
     <mat-card  class="results pollution"
@@ -41,7 +37,7 @@ fxLayoutAlign="center">
 
     <mat-card class="results temp"
     fxFlexOrder="3">
-        <h2>It's {{ temp }} outside</h2>
+        <h2>It's {{ temp }} &#8457; outside</h2>
     </mat-card>
 </section>
 
@@ -54,10 +50,10 @@ fxLayoutAlign="center">
                </mat-panel-title>
            </mat-expansion-panel-header>
 
-           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed velit dignissim sodales ut eu sem. Nisl purus in mollis nunc sed id semper risus in. Tincidunt augue interdum velit euismod in pellentesque. Fermentum et sollicitudin ac orci phasellus egestas tellus. Condimentum mattis pellentesque id nibh tortor id. Cursus in hac habitasse platea dictumst quisque sagittis. Netus et malesuada fames ac. Ultricies mi quis hendrerit dolor magna eget est lorem. Vestibulum morbi blandit cursus risus at. Maecenas pharetra convallis posuere morbi leo.</p>
-
-           <p>In arcu cursus euismod quis. Phasellus vestibulum lorem sed risus ultricies. Gravida neque convallis a cras semper auctor. Donec adipiscing tristique risus nec feugiat in fermentum. Nec ultrices dui sapien eget mi proin. Metus aliquam eleifend mi in nulla posuere sollicitudin. Etiam non quam lacus suspendisse. Urna porttitor rhoncus dolor purus non enim praesent elementum. Ultrices sagittis orci a scelerisque purus semper eget duis. Consectetur a erat nam at lectus urna. Mauris augue neque gravida in fermentum.</p>
-       </mat-expansion-panel>
+           <p>
+                The Air Quality Index (AQI) is an index for reporting daily air quality. It tells you how clean or polluted your air is, and what associated health effects might be a concern for you. The AQI focuses on health effects you may experience within a few hours or days after breathing polluted air.</p>
+           <p id="conditions"></p>
+         </mat-expansion-panel>
     </div>
 
     <div class="what-do">
@@ -68,10 +64,8 @@ fxLayoutAlign="center">
                </mat-panel-title>
            </mat-expansion-panel-header>
 
-           <p>Aliquam ut porttitor leo a diam sollicitudin tempor id eu. Platea dictumst vestibulum rhoncus est. A scelerisque purus semper eget duis at tellus at. Ornare arcu odio ut sem nulla. Cursus turpis massa tincidunt dui ut ornare. Nunc sed velit dignissim sodales ut eu sem. Elit pellentesque habitant morbi tristique senectus. Fermentum odio eu feugiat pretium nibh. Id nibh tortor id aliquet lectus proin nibh. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget.</p>
-
-           <p>At risus viverra adipiscing at in tellus integer feugiat. In iaculis nunc sed augue lacus viverra vitae congue. Mi quis hendrerit dolor magna eget est lorem ipsum. Mollis aliquam ut porttitor leo a diam sollicitudin tempor. Sed felis eget velit aliquet. Vulputate mi sit amet mauris. Porttitor lacus luctus accumsan tortor posuere ac ut consequat. Curabitur gravida arcu ac tortor dignissim convallis aenean. Vulputate dignissim suspendisse in est ante. Ipsum dolor sit amet consectetur adipiscing elit. Interdum velit laoreet id donec ultrices tincidunt arcu non. In metus vulputate eu scelerisque felis imperdiet proin. Maecenas ultricies mi eget mauris pharetra et. Egestas integer eget aliquet nibh. Urna duis convallis convallis tellus. Dolor morbi non arcu risus quis varius. A diam sollicitudin tempor id. Volutpat est velit egestas dui id ornare arcu odio. Fames ac turpis egestas sed tempus urna et pharetra pharetra. Ornare massa eget egestas purus viverra accumsan in nisl.</p>
-       </mat-expansion-panel>
+           <p id="recommendations"></p>
+        </mat-expansion-panel>
     </div>
 </section>
 
