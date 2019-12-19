@@ -14,27 +14,33 @@ declare global {
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit { 
+export class MapComponent implements OnInit {
   @ViewChild(MapInfoWindow, { static: false }) infoWindow: MapInfoWindow
   @Input() results: any;
   @Input() cityResults: any[];
-	
 
-  
 
-infoContent: string;
+
+
+  infoContent: string;
+  infoContent2: string;
+
   markers: any[] = [];
   isGreen: boolean;
   isRed: boolean;
   isOrange: boolean;
-//	info: MapInfoWindow
-	
-openInfo(marker: MapMarker, content) {
-	    this.infoContent = "CONTENT";
-    this.infoWindow.open(marker)
+
+  //	info: MapInfoWindow
+
+  openInfo(marker: MapMarker, content) {
+    this.infoContent = content.extraProps.city;
+    this.infoContent2 = content.extraProps.ts;
+
+    this.infoWindow.open(marker);
+    console.log(content);
   }
- 
-	
+
+
 
   pulsar() {
     if (this.results.data.current.pollution.aqius <= 50) {
@@ -59,7 +65,7 @@ openInfo(marker: MapMarker, content) {
     minZoom: 8,
     disableDefaultUI: true,
     draggable: false,
-   	
+
 
 
     styles: [
@@ -340,7 +346,7 @@ openInfo(marker: MapMarker, content) {
           lat: this.results.data.location.coordinates[1],
           lng: this.results.data.location.coordinates[0]
         },
-	 
+
         visible: false,
 
         label: {
@@ -358,14 +364,14 @@ openInfo(marker: MapMarker, content) {
 
       ]
       this.pulsar();
-//	 this.getIcon();	
+      //	 this.getIcon();	
     }
   }
 
-	
-// getIcon() {
-//	 icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-// }
+
+  // getIcon() {
+  //	 icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+  // }
 
 
   //		 if (this.cityResults && this.cityResults.data) {
@@ -399,10 +405,10 @@ openInfo(marker: MapMarker, content) {
   }
 
   ngOnInit() {
-//	  	const markers = new google.maps.Marker({
-////  position:myCenter,
-//  icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-//});
+    //	  	const markers = new google.maps.Marker({
+    ////  position:myCenter,
+    //  icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+    //});
 
 
     // console.log(this.results);
@@ -426,29 +432,34 @@ openInfo(marker: MapMarker, content) {
   addMarker() {
     if (this.cityResults.length) {
       for (let i = 0; i < this.cityResults.length; i++) {
-        this.cityResults[i];  
+        this.cityResults[i];
         this.markers.push({
 
           position: {
             lat: this.cityResults[i].data.location.coordinates[1],
             lng: this.cityResults[i].data.location.coordinates[0]
           },
-//			color: 'blue',
+          //			color: 'blue',
           label: {
             color: 'white',
-//            text: this.cityResults[i].data.city,
-			 text: '' + this.cityResults[i].data.current.pollution.aqius,
+            //            text: this.cityResults[i].data.city,
+            text: '' + this.cityResults[i].data.current.pollution.aqius,
           },
           title: this.cityResults[i].data.city,
-          options: { animation: google.maps.Animation.DROP,
-				   	 opacity: .8
-				   },
-			
-//			icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          options: {
+            animation: google.maps.Animation.DROP,
+            opacity: .8
+          },
+          extraProps: {
+            city: this.cityResults[i].data.city,
+            ts: this.cityResults[i].data.current.weather.ts
+          }
+
+          //			icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
 
 
         })
-		  
+
       }
     }
   }

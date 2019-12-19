@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 
 // const BASE_URL = "api.airvisual.com/v2/city?";
-const apiKey = "abc33869-536f-437c-8d31-44ae5b3f13ac";
+const apiKey = "a6eb3192-1647-46b5-9faa-50bb25b95a5f";
 const country = "USA";
 
 
@@ -41,8 +41,8 @@ export class SearchService {
 
     });
   }
-	
-fetchCityData(params) {
+
+  fetchCityData(params) {
     return this.http.get("http://api.airvisual.com/v2/city?", {
       params: {
         key: apiKey,
@@ -53,25 +53,25 @@ fetchCityData(params) {
 
 
     });
-  }	
-	
-//	allCities: any[] = fetchCityList(params);
-//	
-//	
-//	
-//	fetchAllCities(params) {
-//	// console.log(params);
-//    return this.http.get("http://api.airvisual.com/v2/city?", {
-//      params: {
-//        key: apiKey,
-//        country: country,
-//        state: params.state,
-//		city:   
-//      }
-//
-//
-//    });
-//  }
+  }
+
+  //	allCities: any[] = fetchCityList(params);
+  //	
+  //	
+  //	
+  //	fetchAllCities(params) {
+  //	// console.log(params);
+  //    return this.http.get("http://api.airvisual.com/v2/city?", {
+  //      params: {
+  //        key: apiKey,
+  //        country: country,
+  //        state: params.state,
+  //		city:   
+  //      }
+  //
+  //
+  //    });
+  //  }
 
 }
 
