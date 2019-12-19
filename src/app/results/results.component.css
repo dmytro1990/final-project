@@ -27,6 +27,7 @@
 p {
     text-align: left;
     font-size: 1.5rem;
+    line-height: 150%;
 }
 
 mat-expansion-panel {
