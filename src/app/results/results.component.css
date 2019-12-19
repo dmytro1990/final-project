@@ -24,17 +24,23 @@ p {
 
 mat-expansion-panel {
     border-radius: 0px;
-    margin-top: 10px;
-    margin-bottom: 10px;
     padding: 10px;
     background-color: rgb(188,226,194);
-    
+    box-shadow: none;
+    text-align: center;
+}
+
+mat-expansion-panel-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 mat-panel-title {
     text-align: center;
     font-size: 2rem;
     font-weight: 700;
+    box-shadow: none;
 }
 
 h1 {
