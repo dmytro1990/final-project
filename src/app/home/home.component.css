@@ -20,18 +20,18 @@ h3 {
     margin-top: -10px;
 }
 
-background-img-box {
+.background-img-box {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    bottom: 0;
 }
 
-
-img {
-    max-width: 92.5%;
-    max-height: 92.5%;
+.bkg-img {
+    max-height: 92.9%;
+    max-width: 92.9%;
 }
-
 
 /* media queries */ 
 
@@ -43,6 +43,10 @@ img {
     h2, h3 {
         text-align: center;
     }
+
+    .bkg-img {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 600px) and (max-width: 959px) {
@@ -52,6 +56,10 @@ img {
 
     h2, h3 {
         text-align: center;
+    }
+
+    .bkg-img {
+       min-width: 100%;
     }
 }
 
