@@ -24,6 +24,24 @@
     color: #038C8C;
 }
 
+.rating-map-box {
+    background-color: #F4EEE7;
+    padding: 10px;
+}
+
+.rt-map {
+    width: 100%;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating-map {
+    width: 414px;
+    height: 125px;
+}
+
 p {
     text-align: left;
     font-size: 1.5rem;
@@ -111,6 +129,26 @@ img {
 
     .air, .pollution, .temp {
         text-align: center;
+    }
+
+    .rating-map-box {
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rt-map {
+        padding: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rating-map {
+        width: 275px;
+        height: 83px;
     }
 }
 
